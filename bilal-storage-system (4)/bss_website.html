@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilal Storage System - Durable Industrial Solutions Since 1994</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        verdana: ['Verdana', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            orange: '#FF5A00',
+                            black: '#0B0B0B',
+                            gray: '#1A1A1A',
+                        }
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 3s infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        .font-brand { font-family: 'Space Grotesk', sans-serif; }
+        
+        /* Sticky form implementation helper */
+        @media (min-width: 1024px) {
+            .sticky-form {
+                position: sticky;
+                top: 2rem;
+                height: fit-content;
+            }
+        }
+
+        .testimonial-slide {
+            display: none;
+        }
+        .testimonial-slide.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-[#FAFAFA] text-brand-black font-sans leading-normal tracking-normal overflow-x-hidden">
+
+    <!-- Top Header -->
+    <div class="bg-brand-black text-white py-2 px-8 text-sm hidden md:flex justify-between items-center relative z-[60]">
+        <div class="flex gap-6">
+            <span class="flex items-center gap-2"><i data-lucide="phone" class="text-brand-orange w-4 h-4"></i> +91 9892944396</span>
+            <span class="flex items-center gap-2"><i data-lucide="mail" class="text-brand-orange w-4 h-4"></i> bilalstoragesystem@gmail.com</span>
+        </div>
+        <div class="flex items-center gap-6">
+            <span class="flex items-center gap-2"><i data-lucide="clock" class="text-brand-orange w-4 h-4"></i> Mon - Sun: 9:00 AM - 9:00 PM</span>
+            <div class="flex items-center gap-3 border-l border-gray-700 pl-6">
+                <a href="https://www.facebook.com/share/1B5Fqwhvbn/" target="_blank" class="hover:text-[#1877F2] transition-colors"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+                <a href="https://www.instagram.com/bilal_storage_system?utm_source=qr&igsh=MXN0N3J3Z3Z3ZjFsag==" target="_blank" class="hover:text-[#E4405F] transition-colors"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navbar -->
+    <nav id="navbar" class="sticky top-0 w-full z-50 bg-white py-5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <a href="#home" class="flex items-center gap-2 group">
+                <div class="bg-brand-orange text-white p-2 rounded-lg font-display font-bold text-xl group-hover:bg-brand-black transition-colors">BSS</div>
+                <div class="flex flex-col">
+                    <span class="font-verdana font-bold text-2xl leading-none text-brand-black tracking-tighter uppercase">Bilal</span>
+                    <span class="text-brand-orange text-[10px] font-bold uppercase tracking-[0.2em] leading-tight">Storage & System</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex items-center gap-8">
+                <ul class="flex space-x-8">
+                    <li><a href="#home" class="text-sm font-semibold text-gray-700 hover:text-brand-orange uppercase tracking-wider">Home</a></li>
+                    <li><a href="#about" class="text-sm font-semibold text-gray-700 hover:text-brand-orange uppercase tracking-wider">About Us</a></li>
+                    <li><a href="#products" class="text-sm font-semibold text-gray-700 hover:text-brand-orange uppercase tracking-wider">Products</a></li>
+                    <li><a href="#contact" class="text-sm font-semibold text-gray-700 hover:text-brand-orange uppercase tracking-wider">Contact</a></li>
+                </ul>
+                <a href="#contact" class="bg-brand-orange text-white px-6 py-2.5 rounded-full font-semibold hover:bg-brand-black transition-colors flex items-center gap-2 shadow-lg">
+                    <i data-lucide="message-square" class="w-[18px] h-[18px]"></i> Get Quote
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="md:hidden text-brand-black" onclick="toggleMenu()">
+                <i id="menu-icon" data-lucide="menu" class="w-[28px] h-[28px]"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-t border-gray-100 shadow-xl py-4 px-4 flex flex-col gap-4">
+            <a href="#home" class="text-lg font-semibold text-gray-800 p-2" onclick="toggleMenu()">Home</a>
+            <a href="#about" class="text-lg font-semibold text-gray-800 p-2" onclick="toggleMenu()">About Us</a>
+            <a href="#products" class="text-lg font-semibold text-gray-800 p-2" onclick="toggleMenu()">Products</a>
+            <a href="#contact" class="text-lg font-semibold text-gray-800 p-2" onclick="toggleMenu()">Contact</a>
+            <a href="#contact" class="w-full text-center bg-brand-orange text-white px-6 py-3 rounded-lg font-semibold" onclick="toggleMenu()">Get Quote</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative bg-brand-black text-white overflow-hidden py-24 md:py-32">
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-brand-orange via-brand-black to-brand-black"></div>
+        <div class="absolute top-0 right-0 w-[800px] h-full bg-brand-orange opacity-20 transform skew-x-[-20deg] origin-top-right"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center">
+            <div class="w-full md:w-3/5 pr-0 md:pr-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full mb-6 text-brand-orange font-medium text-sm border border-brand-orange/30">
+                    <i data-lucide="shield-check" class="w-4 h-4"></i> Highly Rated Manufacturer in Mumbai
+                </div>
+                <h1 class="text-5xl md:text-7xl font-display font-bold leading-[1.1] tracking-tight mb-6 uppercase">
+                    Your Trusted Partner for <span class="text-brand-orange">Durable Storage</span> Solutions
+                </h1>
+                <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl font-light">
+                    Manufacturers & Suppliers of high-quality Slotted Angle Racks, Heavy Duty Racks, and Industrial Storage Systems. Serving since 1994.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#products" class="bg-brand-orange text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-brand-black transition-all flex items-center justify-center gap-2 shadow-xl shadow-orange-500/20">
+                        Explore Products <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="w-full md:w-2/5 mt-16 md:mt-0 relative">
+                <img src="https://images.unsplash.com/photo-1586528116311-ad8ed7450f2c?auto=format&fit=crop&q=80&w=800" alt="Warehouse" class="rounded-2xl shadow-2xl relative z-10 border-4 border-brand-gray">
+                <div class="absolute -bottom-6 -left-6 bg-brand-orange text-white p-6 rounded-xl shadow-xl z-20 font-display">
+                    <div class="text-3xl font-bold">30+</div>
+                    <div class="text-sm font-medium uppercase tracking-wide">Years Exp</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div class="flex flex-col md:flex-row gap-16 items-center">
+            <div class="w-full md:w-1/2 relative">
+              <div class="absolute top-0 -left-4 w-24 h-24 bg-brand-orange/10 rounded-full blur-xl"></div>
+              <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&q=80&w=800" alt="Warehouse inside" class="w-full h-auto rounded-3xl object-cover min-h-[400px] border-l-8 border-brand-orange border-b-8 shadow-xl" />
+            </div>
+            <div class="w-full md:w-1/2">
+              <h4 class="text-brand-orange font-bold uppercase tracking-widest mb-2 text-sm flex items-center gap-2">
+                <span class="w-8 h-0.5 bg-brand-orange"></span> About Us
+              </h4>
+              <h2 class="text-4xl md:text-5xl font-display font-bold text-brand-black mb-6 leading-tight">
+                Pioneering Storage Solutions since 1994
+              </h2>
+              <div class="text-gray-600 mb-8 space-y-4">
+                <p>
+                  <strong>Bilal Storage System</strong>, established in 1994, is a trusted manufacturer and supplier of high-quality storage solutions based in Mumbai. With over three decades of experience, we specialize in designing durable and customizable racks.
+                </p>
+                <p>
+                  Customer satisfaction is at our core. We focus on delivering reliable, cost-effective, and tailored storage systems for industrial and warehouse applications.
+                </p>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                 <div class="bg-gray-50 p-4 rounded-xl border-l-4 border-brand-black">
+                    <h5 class="font-bold text-brand-black mb-2 flex items-center gap-2"><i data-lucide="check-circle" class="text-brand-orange w-4 h-4"></i> Our Mission</h5>
+                    <p class="text-xs text-gray-600">To provide efficient, durable, and cost-effective storage solutions that enhance operational efficiency.</p>
+                 </div>
+                 <div class="bg-gray-50 p-4 rounded-xl border-l-4 border-brand-orange">
+                    <h5 class="font-bold text-brand-black mb-2 flex items-center gap-2"><i data-lucide="check-circle" class="text-brand-black w-4 h-4"></i> Our Vision</h5>
+                    <p class="text-xs text-gray-600">To become a leading storage system manufacturer in India known for innovation and quality.</p>
+                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-24 bg-gray-50 border-y border-gray-200 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-start mb-16">
+                <div class="max-w-2xl">
+                    <h4 class="text-brand-orange font-bold uppercase tracking-widest mb-2 text-sm flex items-center gap-2">
+                        <span class="w-8 h-0.5 bg-brand-orange"></span> Our Competitive Edge
+                    </h4>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold text-brand-black leading-tight">Why Industry Leaders <span class="text-brand-orange">Choose Us</span></h2>
+                </div>
+                <p class="md:w-1/3 text-gray-500 text-lg mt-4 md:mt-0">We combine decades of traditional craftsmanship with modern engineering to solve your storage challenges.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:border-brand-orange transition-all group">
+                    <div class="w-14 h-14 bg-gray-50 rounded-xl flex items-center justify-center mb-6 text-brand-black group-hover:bg-brand-orange group-hover:text-white transition-all"><i data-lucide="clock" class="w-8 h-8"></i></div>
+                    <h3 class="text-xl font-bold mb-3 font-brand">30+ Years Legacy</h3>
+                    <p class="text-gray-500 text-sm">Serving thousands of satisfied clients in Mumbai and beyond since 1994.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:border-brand-orange transition-all group">
+                    <div class="w-14 h-14 bg-gray-50 rounded-xl flex items-center justify-center mb-6 text-brand-black group-hover:bg-brand-orange group-hover:text-white transition-all"><i data-lucide="shield-check" class="w-8 h-8"></i></div>
+                    <h3 class="text-xl font-bold mb-3 font-brand">Uncompromising Quality</h3>
+                    <p class="text-gray-500 text-sm">ISI Grade mild steel ensures our racks handle heavy loads ohne buckling.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:border-brand-orange transition-all group">
+                    <div class="w-14 h-14 bg-gray-50 rounded-xl flex items-center justify-center mb-6 text-brand-black group-hover:bg-brand-orange group-hover:text-white transition-all"><i data-lucide="wrench" class="w-8 h-8"></i></div>
+                    <h3 class="text-xl font-bold mb-3 font-brand">Custom Engineering</h3>
+                    <p class="text-gray-500 text-sm">Bespoke dimensions tailored to maximize your specific facility space.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:border-brand-orange transition-all group">
+                    <div class="w-14 h-14 bg-gray-50 rounded-xl flex items-center justify-center mb-6 text-brand-black group-hover:bg-brand-orange group-hover:text-white transition-all"><i data-lucide="message-square" class="w-8 h-8"></i></div>
+                    <h3 class="text-xl font-bold mb-3 font-brand">Fast Response</h3>
+                    <p class="text-gray-500 text-sm">Quick 20-25 minute response time for quotations and inquiries.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Services Section -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
+            <h4 class="text-brand-orange font-bold uppercase tracking-widest mb-2 text-sm justify-center flex items-center gap-2">
+              <span class="w-8 h-0.5 bg-brand-orange"></span> End-to-End Solutions
+            </h4>
+            <h2 class="text-4xl font-display font-bold text-brand-black">Our Services</h2>
+            <p class="text-gray-500 max-w-2xl mx-auto mt-4">We ensure your infrastructure is efficient, safe, and durable.</p>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="p-8 rounded-2xl bg-gray-50 border border-gray-100 group relative overflow-hidden">
+                <span class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity text-6xl font-bold">01</span>
+                <i data-lucide="factory" class="w-10 h-10 mb-6 text-brand-orange"></i>
+                <h4 class="font-bold text-xl mb-3">Custom Manufacturing</h4>
+                <p class="text-gray-500 text-sm">High-precision fabrication using ISI grade mild steel.</p>
+            </div>
+            <div class="p-8 rounded-2xl bg-gray-50 border border-gray-100 group relative overflow-hidden">
+                <span class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity text-6xl font-bold">02</span>
+                <i data-lucide="wrench" class="w-10 h-10 mb-6 text-brand-orange"></i>
+                <h4 class="font-bold text-xl mb-3">Professional Installation</h4>
+                <p class="text-gray-500 text-sm">Expert on-site assembly to ensure ultimate structural safety.</p>
+            </div>
+            <div class="p-8 rounded-2xl bg-gray-50 border border-gray-100 group relative overflow-hidden">
+                <span class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity text-6xl font-bold">03</span>
+                <i data-lucide="search" class="w-10 h-10 mb-6 text-brand-orange"></i>
+                <h4 class="font-bold text-xl mb-3">Space Optimization</h4>
+                <p class="text-gray-500 text-sm">Layout designs to maximize your facility's storage capacity.</p>
+            </div>
+            <div class="p-8 rounded-2xl bg-gray-50 border border-gray-100 group relative overflow-hidden">
+                <span class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity text-6xl font-bold">04</span>
+                <i data-lucide="shield-check" class="w-10 h-10 mb-6 text-brand-orange"></i>
+                <h4 class="font-bold text-xl mb-3">Maintenance & Repair</h4>
+                <p class="text-gray-500 text-sm">Safety audits and repair services for peak system upkeep.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-24 bg-brand-gray text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+                <div class="max-w-2xl">
+                    <h4 class="text-brand-orange font-bold uppercase tracking-widest mb-2 text-sm">Our Products</h4>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold leading-tight">Industrial & Commercial Racks</h2>
+                </div>
+                <div class="mt-8 md:mt-0">
+                    <a href="#" class="inline-flex items-center gap-2 bg-brand-orange text-white px-6 py-3 rounded-lg font-bold hover:bg-white hover:text-brand-black transition-all">
+                        <i data-lucide="download" class="w-5 h-5"></i> Download Catalog
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="product-grid">
+                <!-- Products will be injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="py-24 bg-white border-y border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
+            <h4 class="text-brand-orange font-bold uppercase tracking-widest mb-2 text-sm">Our Success Stories</h4>
+            <h2 class="text-4xl font-display font-bold text-brand-black">Prominent Corporate Clients</h2>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap justify-center gap-8">
+            <div class="bg-gray-50 px-8 py-4 rounded-xl border border-gray-100 font-bold text-gray-700">AIZEL PHARMA PVT LTS</div>
+            <div class="bg-gray-50 px-8 py-4 rounded-xl border border-gray-100 font-bold text-gray-700">CCM FACILITY MANAGEMENT</div>
+            <div class="bg-gray-50 px-8 py-4 rounded-xl border border-gray-100 font-bold text-gray-700">ADVANCE POWER DISPLAY</div>
+            <div class="bg-gray-50 px-8 py-4 rounded-xl border border-gray-100 font-bold text-gray-700">DELHIVERY LIMITED</div>
+            <div class="bg-gray-50 px-8 py-4 rounded-xl border border-gray-100 font-bold text-gray-700">AUTO HANGAR PVT. LTD.</div>
+        </div>
+    </section>
+
+    <!-- Testimonials Slider -->
+    <section class="py-24 bg-gray-50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col items-center text-center">
+                <h4 class="text-brand-orange font-bold uppercase tracking-widest mb-2 text-sm">Testimonials</h4>
+                <h2 class="text-4xl font-display font-bold text-brand-black mb-16">What Our Clients Say</h2>
+                
+                <div id="testimonial-container" class="relative w-full max-w-4xl min-h-[300px] flex items-center justify-center">
+                    <div class="testimonial-slide active bg-white p-12 rounded-3xl border border-gray-100 shadow-sm w-full">
+                        <div class="text-brand-orange flex justify-center gap-1 mb-6"><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i></div>
+                        <p class="text-xl italic text-gray-700 mb-8 font-light leading-relaxed">"The heavy-duty racks from Bilal Storage System have completely transformed our warehouse efficiency. Exceptional quality and professional installation."</p>
+                        <h4 class="font-bold text-lg">Sandeep Gupta</h4>
+                        <p class="text-brand-orange font-medium text-sm">Industrial Manager</p>
+                    </div>
+                    <div class="testimonial-slide bg-white p-12 rounded-3xl border border-gray-100 shadow-sm w-full">
+                        <div class="text-brand-orange flex justify-center gap-1 mb-6"><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i></div>
+                        <p class="text-xl italic text-gray-700 mb-8 font-light leading-relaxed">"Decades of experience really shows. Their slotted angle racks are the best in Mumbai - sturdy, precise, and delivered on time."</p>
+                        <h4 class="font-bold text-lg">Amit Sharma</h4>
+                        <p class="text-brand-orange font-medium text-sm">Retail Store Owner</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-brand-black text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <div>
+              <h4 class="text-brand-orange font-bold uppercase tracking-widest mb-2 text-sm flex items-center gap-2"><span class="w-8 h-0.5 bg-brand-orange"></span> Connect</h4>
+              <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">Ready to optimize your space?</h2>
+              <p class="text-gray-400 mb-10 text-lg">Contact Bilal Storage System for customized manufacturing of storage solutions in Mumbai.</p>
+              
+              <div class="space-y-8 mb-12">
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 bg-white/10 flex items-center justify-center rounded-full shrink-0 text-brand-orange"><i data-lucide="map-pin"></i></div>
+                  <div>
+                    <h4 class="font-bold text-xl mb-1">Our Facility</h4>
+                    <p class="text-gray-400 text-sm">Kurla West, Mumbai – 400070, Maharashtra, India</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 bg-white/10 flex items-center justify-center rounded-full shrink-0 text-brand-orange"><i data-lucide="phone"></i></div>
+                  <div>
+                    <h4 class="font-bold text-xl mb-1">Call Us</h4>
+                    <p class="text-gray-400 text-sm">+91 9892944396 / +91 9167613174</p>
+                  </div>
+                </div>
+              </div>
+
+               <!-- Card Placeholder -->
+               <div class="bg-white/5 border border-white/10 p-6 rounded-2xl relative overflow-hidden group">
+                   <div class="flex justify-between items-start mb-4">
+                        <div class="bg-brand-orange text-white p-2 rounded text-xs font-bold">EST. 1994</div>
+                        <i data-lucide="check-circle" class="text-brand-orange w-5 h-5"></i>
+                   </div>
+                   <h3 class="font-verdana font-bold text-2xl uppercase tracking-tighter">Rafiq Karle</h3>
+                   <p class="text-brand-orange text-xs font-bold uppercase tracking-widest mb-4">Proprietor | Bilal Storage System</p>
+                   <div class="text-[10px] text-gray-500 uppercase tracking-widest border-t border-white/10 pt-4">Mumbai Manufacturer</div>
+               </div>
+            </div>
+
+            <!-- Sticky Form -->
+            <div class="sticky-form bg-white p-8 md:p-10 rounded-2xl shadow-2xl text-brand-black">
+              <h3 class="text-2xl font-display font-bold mb-6">Get a Fast Quote</h3>
+              <form class="space-y-6" onsubmit="event.preventDefault(); alert('Inquiry Sent! We will contact you soon.');">
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Full Name</label>
+                        <input type="text" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-brand-orange" placeholder="Your Name" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Phone Number</label>
+                        <input type="tel" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-brand-orange" placeholder="+91 XXXXX XXXXX" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Requirement Type</label>
+                        <select class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-brand-orange">
+                            <option>Slotted Angle Racks</option>
+                            <option>Heavy Duty Racks</option>
+                            <option>Lockers / Pigeon Hole</option>
+                            <option>Mezzanine Floor</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="w-full bg-brand-orange text-white py-4 rounded-lg font-bold text-lg hover:bg-brand-black transition-all">Send Inquiry Now</button>
+              </form>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-gray text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row justify-between items-center gap-8">
+            <div class="flex items-center gap-2">
+                <div class="bg-brand-black text-brand-orange p-1 rounded font-display font-bold text-xl border border-gray-700">BSS</div>
+                <div class="flex flex-col text-left">
+                    <span class="font-verdana font-bold text-xl leading-none text-white uppercase tracking-tighter">BILAL</span>
+                    <span class="text-brand-orange text-[9px] font-bold uppercase tracking-widest">Storage & System</span>
+                </div>
+            </div>
+            <p class="text-xs">&copy; 2024 Bilal Storage System. Designed for Efficiency.</p>
+            <div class="flex gap-4">
+                <a href="https://www.facebook.com/share/1B5Fqwhvbn/" target="_blank" class="hover:text-white"><i data-lucide="facebook"></i></a>
+                <a href="https://www.instagram.com/bilal_storage_system?utm_source=qr&igsh=MXN0N3J3Z3Z3ZjFsag==" target="_blank" class="hover:text-white"><i data-lucide="instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="quickview-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-md" onclick="closeModal()"></div>
+        <div class="bg-white rounded-3xl overflow-hidden max-w-5xl w-full relative z-[101] flex flex-col md:flex-row shadow-2xl max-h-[90vh]">
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-[102] w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center"><i data-lucide="x"></i></button>
+            <div class="md:w-1/2 bg-gray-100 h-64 md:h-auto overflow-hidden relative group">
+                <img id="modal-image" src="" alt="" class="w-full h-full object-cover">
+                <div class="absolute inset-0 flex items-center justify-between p-4 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
+                    <button onclick="prevImage()" class="pointer-events-auto w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center"><i data-lucide="chevron-left"></i></button>
+                    <button onclick="nextImage()" class="pointer-events-auto w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center"><i data-lucide="chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="md:w-1/2 p-8 overflow-y-auto">
+                <h4 class="text-brand-orange font-bold uppercase text-xs tracking-widest mb-2">Specifications</h4>
+                <h2 id="modal-title" class="text-2xl font-display font-bold mb-4"></h2>
+                <p id="modal-desc" class="text-gray-600 mb-8 text-sm"></p>
+                <div id="modal-specs" class="space-y-4 mb-8"></div>
+                <a href="#contact" onclick="closeModal()" class="block w-full text-center bg-brand-orange text-white py-4 rounded-xl font-bold">Request Pricing</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating AI Button & WhatsApp -->
+    <div class="fixed bottom-6 right-6 flex flex-col gap-4 z-[40]">
+        <a href="mailto:bilalstoragesystem@gmail.com,bilalfabrication@gmail.com?subject=Inquiry" class="bg-brand-orange text-white p-4 rounded-full shadow-xl hover:scale-110 transition-transform"><i data-lucide="mail"></i></a>
+        <a href="https://wa.me/919892944396" target="_blank" class="bg-[#25D366] text-white p-4 rounded-full shadow-xl hover:scale-110 transition-transform"><i data-lucide="message-square"></i></a>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        const products = [
+            { name: 'Slotted Angle Racks', desc: 'Versatile and easy to assemble racks using ISI Grade Mild Steel.', image: 'input_file_0.png', images: ['input_file_0.png', 'input_file_1.png', 'input_file_6.png'], specs: [{l:'Load', v:'250kg/layer'}, {l:'Material', v:'Mild Steel'}]},
+            { name: 'Heavy Duty Racks', desc: 'Robust storage systems designed for industrial heavy loads.', image: 'input_file_2.png', images: ['input_file_2.png', 'input_file_3.png', 'input_file_6.png'], specs: [{l:'Load', v:'3000kg/layer'}, {l:'Finish', v:'Powder Coated'}]},
+            { name: 'Mezzanine Floors', desc: 'Custom mezzanine systems to double your storage space.', image: 'input_file_5.png', images: ['input_file_5.png', 'input_file_0.png'], specs: [{l:'System', v:'Column Supported'}, {l:'Decking', v:'Steel Plate'}]},
+            { name: 'Lockers', desc: 'Secure industrial storage for commercial environments.', image: 'input_file_1.png', images: ['input_file_1.png', 'input_file_4.png'], specs: [{l:'Design', v:'Multi-door'}, {l:'Locks', v:'Padlock/Key'}]},
+            { name: 'Pallet Racks', desc: 'Efficient warehouse storage for palletized goods.', image: 'input_file_3.png', images: ['input_file_3.png', 'input_file_2.png'], specs: [{l:'Access', v:'Selectivity'}, {l:'Pitch', v:'75mm'}]},
+            { name: 'Pigeon Hole Racks', desc: 'Organized storage for small parts and manual picking.', image: 'input_file_4.png', images: ['input_file_4.png', 'input_file_6.png'], specs: [{l:'Material', v:'Light MS'}, {l:'Bins', v:'Customizable'}]}
+        ];
+
+        let activeProductIdx = null;
+        let activeImageIdx = 0;
+
+        const grid = document.getElementById('product-grid');
+        products.forEach((p, idx) => {
+            const card = document.createElement('div');
+            card.className = "group bg-[#222] rounded-2xl overflow-hidden border border-gray-800 flex flex-col transform hover:-translate-y-2 transition-all duration-300 h-full flex flex-col";
+            card.innerHTML = `
+                <div class="h-64 relative overflow-hidden shrink-0">
+                    <img src="${p.image}" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                        <button onclick="openModal(${idx})" class="bg-brand-orange text-white px-6 py-2 rounded-full font-bold">Quick View</button>
+                    </div>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <h3 class="text-xl font-bold mb-2 font-brand">${p.name}</h3>
+                    <p class="text-gray-400 text-sm mb-6 flex-grow">${p.desc}</p>
+                    <a href="#contact" class="text-brand-orange font-bold text-xs uppercase tracking-widest hover:underline">Get Pricing</a>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        // Modals
+        function openModal(idx) {
+            activeProductIdx = idx;
+            activeImageIdx = 0;
+            const p = products[idx];
+            document.getElementById('modal-title').innerText = p.name;
+            document.getElementById('modal-desc').innerText = p.desc;
+            document.getElementById('modal-image').src = p.images[0];
+            document.getElementById('modal-specs').innerHTML = p.specs.map(s => `
+                <div class="flex justify-between py-2 border-b border-gray-100 italic">
+                    <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">${s.l}</span>
+                    <span class="font-semibold text-sm">${s.v}</span>
+                </div>
+            `).join('');
+            document.getElementById('quickview-modal').classList.remove('hidden');
+            document.getElementById('quickview-modal').classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal() { document.getElementById('quickview-modal').classList.add('hidden'); document.body.style.overflow = ''; }
+        function nextImage() { const p = products[activeProductIdx]; activeImageIdx = (activeImageIdx + 1) % p.images.length; document.getElementById('modal-image').src = p.images[activeImageIdx]; }
+        function prevImage() { const p = products[activeProductIdx]; activeImageIdx = (activeImageIdx - 1 + p.images.length) % p.images.length; document.getElementById('modal-image').src = p.images[activeImageIdx]; }
+
+        // Testimonial rotation
+        let curT = 0;
+        const ts = document.querySelectorAll('.testimonial-slide');
+        setInterval(() => {
+            ts[curT].classList.remove('active');
+            curT = (curT + 1) % ts.length;
+            ts[curT].classList.add('active');
+        }, 5000);
+
+        // Simple mobile toggle
+        function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
+    </script>
+</body>
+</html>
